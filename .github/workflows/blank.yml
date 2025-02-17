@@ -98,3 +98,6 @@ jobs:
             files: |
               *.AppImage*
           continue-on-error: false
+          
+        - name: Soar Nest
+          uses: "${{ github.repository }}/.github/soar.yaml"
