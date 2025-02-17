@@ -99,9 +99,6 @@ jobs:
               *.AppImage*
           continue-on-error: false
           
-        - name: Soar Nest
-          uses: "${{ github.repository }}/.github/soar.yaml@${{ github.ref }}"
-
   soar-nest:
     needs: [release]
     permissions:
