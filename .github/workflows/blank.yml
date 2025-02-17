@@ -103,20 +103,18 @@ jobs:
           uses: "${{ github.repository }}/.github/soar.yaml@${{ github.ref }}"
 
   soar-nest:
-      needs: [release]
-      permissions:
-        attestations: write
-        contents: write
-        id-token: write
-        packages: write
-      runs-on: ubuntu-latest
-      steps:
-        - uses: "pkgforge/soarpkgs/.github/workflows/matrix_builds.yaml@main"
-          with:
-            host: "x86_64-Linux"
-            sbuild-url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-tools/appimage.pkgforge-dev.stable.yaml"
-            ghcr-url: "ghcr.io/${{ github.repository }}/stable"
-            pkg-family: "android-tools"
-            debug: false
-            logs: true
-            rebuild: true
+    needs: [release]
+    permissions:
+      attestations: write
+      contents: write
+      id-token: write
+      packages: write
+    uses: "pkgforge/soarpkgs/.github/workflows/matrix_builds.yaml@main"
+    with:
+      host: "x86_64-Linux"
+      sbuild-url: "https://raw.githubusercontent.com/pkgforge/soarpkgs/refs/heads/main/packages/android-tools/appimage.pkgforge-dev.stable.yaml"
+      ghcr-url: "ghcr.io/${{ github.repository }}/stable"
+      pkg-family: "android-tools"
+      debug: false
+      logs: true
+      rebuild: true
